@@ -15,8 +15,6 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "produtos")
-
-
 public class Produtos {
 	
 	@Id
@@ -43,6 +41,8 @@ public class Produtos {
 	
 	@NotBlank
 	private String lancamento ;
+	
+	private String foto;
 	
 	public Long getId() {
 		return id;
@@ -77,7 +77,7 @@ public class Produtos {
 	public double getValor() {
 		return valor;
 	}
-	public void setValor(Integer valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	public String getLancamento() {
@@ -86,6 +86,13 @@ public class Produtos {
 	public void setLancamento(String lancamento) {
 		this.lancamento = lancamento;
 	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
 	
 	
 
