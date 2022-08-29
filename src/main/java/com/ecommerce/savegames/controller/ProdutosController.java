@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,11 +72,11 @@ public class ProdutosController {
 				.body(repository.save(produtos));
 	}
 	
-	@PatchMapping
-	public ResponseEntity<Produtos> patch (@RequestBody Produtos produtos){
-		return ResponseEntity.status(HttpStatus.OK)
-				.body(repository.save(produtos));
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		repository.deleteById(id);
 	}
+	
 	
 	
 	
