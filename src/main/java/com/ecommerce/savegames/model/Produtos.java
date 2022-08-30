@@ -1,17 +1,25 @@
 package com.ecommerce.savegames.model;
 
-import java.util.Date;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+
+
 
 @Entity
 @Table(name = "produtos")
@@ -25,12 +33,9 @@ public class Produtos {
 	@Size( max = 100)
 	private String nome;
 	
-	@NotBlank
-	@Size( max = 100)
-	private String genero;
 	
 	@NotBlank
-	private String descriçao;
+	private String sobre;
 	
 	@NotBlank
 	@Size( max = 20)
@@ -43,6 +48,17 @@ public class Produtos {
 	private String lancamento ;
 	
 	private String foto;
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Genero genero;
+	
+	@OneToMany(mappedBy = "produtos", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("produtos")
+	private List<Avaliacoes> avaliacoes;
+	
+	
+	
+	
 	
 	public Long getId() {
 		return id;
@@ -56,17 +72,13 @@ public class Produtos {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getGenero() {
-		return genero;
+	
+	
+	public String getSobre() {
+		return sobre;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	public String getDescriçao() {
-		return descriçao;
-	}
-	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+	public void setSobre(String sobre) {
+		this.sobre = sobre;
 	}
 	public String getPlataforma() {
 		return plataforma;
@@ -92,6 +104,20 @@ public class Produtos {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	public Genero getGenero() {
+		return genero;
+	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+	public List<Avaliacoes> getAvaliacoes() {
+		return avaliacoes;
+	}
+	public void setAvaliacoes(List<Avaliacoes> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+	
+	
 	
 	
 	
