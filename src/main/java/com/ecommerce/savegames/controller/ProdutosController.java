@@ -1,6 +1,7 @@
 package com.ecommerce.savegames.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +48,7 @@ public class ProdutosController {
 	
 	/*@GetMapping("/genero/{genero}")
 	public ResponseEntity<List<Produtos>> GetByGenero(@PathVariable String genero){
-		return ResponseEntity.ok(repository.findAllByGeneroContainingIgnoreCase(genero));
+		return ResponseEntity.ok(repository.findAllByGenero( genero));
 	}*/
 	
 	@GetMapping("/lancamento/{lancamento}")

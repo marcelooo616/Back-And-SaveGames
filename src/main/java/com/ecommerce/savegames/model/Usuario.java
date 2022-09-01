@@ -9,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "usuario")
@@ -23,8 +26,9 @@ public class Usuario {
 	private Long id;
 	
 	private String nome;
+	@Schema(example = "email@email.com.br")
 	@NotBlank
-	private String email;
+	private String usuario;
 	private String foto;
 	
 	@NotBlank
@@ -33,6 +37,22 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<Avaliacoes> avaliacoes;
+	
+	
+	/*Primeiro metodo Construtor para testes JUnit*/
+	public Usuario(Long id, String nome, String usuario, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+	
+	/*Segundo metodo Construtor para testes JUnit*/
+    public Usuario() {
+    	
+    }
+	
+	
 
 	public Long getId() {
 		return id;
@@ -50,12 +70,14 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	
+
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getFoto() {
