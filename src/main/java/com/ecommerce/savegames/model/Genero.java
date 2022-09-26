@@ -24,7 +24,7 @@ public class Genero {
 	@NotBlank
 	private String descricao;
 	
-	@OneToMany(mappedBy = "genero", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "genero", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("genero")
 	private List<Produtos> produtos;
 
@@ -32,7 +32,7 @@ public class Genero {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
