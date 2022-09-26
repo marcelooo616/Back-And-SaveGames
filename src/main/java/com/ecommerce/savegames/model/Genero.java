@@ -19,7 +19,7 @@ public class Genero {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotBlank
 	private String descricao;
@@ -28,7 +28,7 @@ public class Genero {
 	@JsonIgnoreProperties("genero")
 	private List<Produtos> produtos;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
