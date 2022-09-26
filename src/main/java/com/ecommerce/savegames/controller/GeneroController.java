@@ -21,17 +21,17 @@ import com.ecommerce.savegames.repository.GeneroRepository;
 public class GeneroController {
 	
 	@Autowired
-	private GeneroRepository repository;
+	private GeneroRepository generoRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Genero>> GetAll(){
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(generoRepository.findAll());
 	}
 	
 	@PostMapping
 	public ResponseEntity<Genero> post (@RequestBody Genero genero){
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(repository.save(genero));
+				.body(generoRepository.save(genero));
 	}
 
 }
