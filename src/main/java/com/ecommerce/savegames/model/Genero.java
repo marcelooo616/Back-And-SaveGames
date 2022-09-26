@@ -24,7 +24,7 @@ public class Genero {
 	@NotBlank
 	private String descricao;
 	
-	@OneToMany(mappedBy = "genero", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "genero", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("genero")
 	private List<Produtos> produtos;
 
